@@ -118,6 +118,16 @@ const MobileNavLink = ({ href, children, onClick }: { href: string, children: Re
 );
 
 const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(e => console.log("Auto-play prevented", e));
+    }
+  }, []);
+
   return (
     <div className="relative pt-32 pb-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 pt-10">
@@ -128,11 +138,13 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
           variants={staggerContainer}
           className="max-w-4xl text-center mx-auto"
         >
-          <motion.div variants={fadeInUp} className="mb-6">
-            <span className="inline-block py-1.5 px-4 rounded-full bg-black/5 text-black font-bold text-xs uppercase tracking-widest">
-              {t.hero_badge}
-            </span>
-          </motion.div>
+          {t.hero_badge && (
+            <motion.div variants={fadeInUp} className="mb-6">
+              <span className="inline-block py-1.5 px-4 rounded-full bg-black/5 text-black font-bold text-xs uppercase tracking-widest">
+                {t.hero_badge}
+              </span>
+            </motion.div>
+          )}
 
           <motion.h1 
             variants={fadeInUp}
@@ -173,6 +185,7 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
         >
           {/* Instructions for user: Add 'showcase.mp4' to the public/ folder to display the video here. */}
           <video 
+            ref={videoRef}
             autoPlay 
             loop 
             muted 
