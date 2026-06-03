@@ -43,12 +43,12 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/90 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent border-transparent py-6'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md border-b border-black/5 py-4' : 'bg-transparent border-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="w-4 h-4 bg-lime-400 rounded-sm"></div>
-            <span className="font-bold text-2xl tracking-tighter text-white uppercase">{t.brand}</span>
+            <div className="w-4 h-4 bg-black rounded-sm group-hover:rotate-45 transition-transform duration-300"></div>
+            <span className="font-black text-2xl tracking-tighter text-black uppercase">{t.brand}</span>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
@@ -58,13 +58,13 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
             
             <button 
               onClick={toggleLang} 
-              className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
+              className="flex items-center gap-2 text-zinc-500 hover:text-black transition-colors"
             >
               <Globe className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-widest">{lang === 'en' ? 'KU' : 'EN'}</span>
             </button>
             
-            <a href="#contact" className="bg-white text-black hover:bg-lime-400 transition-colors px-6 py-2.5 rounded-full text-sm font-bold tracking-tight">
+            <a href="#contact" className="bg-black text-white hover:bg-zinc-800 transition-colors px-6 py-2.5 rounded-full text-sm font-bold tracking-tight shadow-lg shadow-black/10">
               {t.nav_get_started}
             </a>
           </div>
@@ -72,12 +72,12 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
           <div className="flex md:hidden items-center gap-4">
             <button 
               onClick={toggleLang} 
-              className="flex items-center gap-1 text-zinc-400 hover:text-white"
+              className="flex items-center gap-1 text-zinc-500 hover:text-black"
             >
               <Globe className="w-5 h-5" />
               <span className="text-xs font-bold uppercase">{lang === 'en' ? 'KU' : 'EN'}</span>
             </button>
-            <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-black p-2">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -90,13 +90,13 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-black border-b border-white/10 absolute w-full top-full left-0 shadow-2xl"
+            className="md:hidden bg-white border-b border-black/5 absolute w-full top-full left-0 shadow-2xl"
           >
             <div className="px-4 pt-4 pb-8 flex flex-col gap-4">
               <MobileNavLink onClick={() => setIsOpen(false)} href="#process">{t.nav_how_it_works}</MobileNavLink>
               <MobileNavLink onClick={() => setIsOpen(false)} href="#pricing">{t.nav_pricing}</MobileNavLink>
               <MobileNavLink onClick={() => setIsOpen(false)} href="#values">{t.nav_why_us}</MobileNavLink>
-              <a href="#contact" onClick={() => setIsOpen(false)} className="text-black bg-lime-400 block w-full text-center px-4 py-4 font-bold mt-4 uppercase tracking-widest text-sm">{t.nav_get_started}</a>
+              <a href="#contact" onClick={() => setIsOpen(false)} className="text-white bg-black rounded-xl block w-full text-center px-4 py-4 font-bold mt-4 uppercase tracking-widest text-sm">{t.nav_get_started}</a>
             </div>
           </motion.div>
         )}
@@ -106,64 +106,85 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
 };
 
 const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
-  <a href={href} className="text-zinc-400 hover:text-white transition-colors text-sm font-bold tracking-wide uppercase">
+  <a href={href} className="text-zinc-500 hover:text-black transition-colors text-sm font-bold tracking-wide uppercase">
     {children}
   </a>
 );
 
 const MobileNavLink = ({ href, children, onClick }: { href: string, children: React.ReactNode, onClick: () => void }) => (
-  <a href={href} onClick={onClick} className="text-zinc-300 hover:text-white block text-2xl font-bold uppercase tracking-tighter border-b border-white/10 pb-4">
+  <a href={href} onClick={onClick} className="text-black hover:text-zinc-600 block text-2xl font-black uppercase tracking-tighter border-b border-black/5 pb-4">
     {children}
   </a>
 );
 
 const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
   return (
-    <div className="relative min-h-screen flex items-center bg-black pt-20">
+    <div className="relative pt-32 pb-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 pt-10">
         
         <motion.div 
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="max-w-5xl"
+          className="max-w-4xl text-center mx-auto"
         >
-          <motion.div variants={fadeInUp} className="mb-8">
-            <span className="inline-block py-1.5 px-4 bg-lime-400 text-black font-bold text-xs uppercase tracking-widest">
+          <motion.div variants={fadeInUp} className="mb-6">
+            <span className="inline-block py-1.5 px-4 rounded-full bg-black/5 text-black font-bold text-xs uppercase tracking-widest">
               {t.hero_badge}
             </span>
           </motion.div>
 
           <motion.h1 
             variants={fadeInUp}
-            className={`text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter text-white mb-8 leading-[0.85] ${lang === 'ku' ? 'leading-tight lg:leading-tight' : ''}`}
+            className={`text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-black mb-8 leading-[0.9] ${lang === 'ku' ? 'leading-[1.1] lg:leading-[1.1]' : ''}`}
           >
             <span className="block">{t.hero_title_1}</span>
-            <span className="block text-zinc-500">
+            <span className="block text-zinc-400">
               {t.hero_title_2}
             </span>
           </motion.h1>
 
           <motion.p 
             variants={fadeInUp}
-            className="mt-8 max-w-2xl text-xl md:text-2xl text-zinc-400 font-medium leading-relaxed"
+            className="mt-8 max-w-2xl mx-auto text-xl md:text-2xl text-zinc-500 font-medium leading-relaxed"
           >
             {t.hero_subtitle}
           </motion.p>
 
           <motion.div 
             variants={fadeInUp}
-            className="mt-16 flex flex-col sm:flex-row gap-6"
+            className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <a href="#pricing" className="inline-flex items-center justify-center px-10 py-5 text-sm font-bold text-black uppercase tracking-widest transition-all bg-lime-400 hover:bg-white group">
+            <a href="#pricing" className="inline-flex items-center justify-center px-10 py-5 text-sm font-bold text-white uppercase tracking-widest transition-all bg-black rounded-full hover:scale-105 active:scale-95 shadow-xl shadow-black/10 group">
               {t.hero_cta_1}
-              <ArrowRight className={`w-5 h-5 transition-transform ${lang === 'ku' ? 'mr-3 rotate-180 group-hover:-translate-x-2' : 'ml-3 group-hover:translate-x-2'}`} />
+              <ArrowRight className={`w-5 h-5 transition-transform ${lang === 'ku' ? 'mr-3 rotate-180 group-hover:-translate-x-1' : 'ml-3 group-hover:translate-x-1'}`} />
             </a>
-            <a href="#process" className="inline-flex items-center justify-center px-10 py-5 text-sm font-bold text-white uppercase tracking-widest transition-all bg-transparent border border-white/20 hover:border-white group">
+            <a href="#process" className="inline-flex items-center justify-center px-10 py-5 text-sm font-bold text-black uppercase tracking-widest transition-all bg-transparent rounded-full hover:bg-black/5 group">
               {t.hero_cta_2}
             </a>
           </motion.div>
         </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-20 max-w-5xl mx-auto rounded-3xl md:rounded-[2.5rem] overflow-hidden bg-zinc-100 border border-black/5 aspect-[16/9] shadow-2xl relative"
+        >
+          {/* Instructions for user: Add 'showcase.mp4' to the public/ folder to display the video here. */}
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="w-full h-full object-cover"
+            src="/showcase.mp4"
+            poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='%23f4f4f5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24px' fill='%23a1a1aa'%3EShowcase Video (Add showcase.mp4 to public folder)%3C/text%3E%3C/svg%3E"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </motion.div>
+
       </div>
     </div>
   );
@@ -179,12 +200,12 @@ const ProcessStep = ({ number, title, description, isKu }: { number: string; tit
   >
     <div className="flex flex-col md:flex-row gap-6 md:gap-16">
       <div className="md:w-32 flex-shrink-0">
-        <div className="text-lime-400 font-black text-6xl tracking-tighter leading-none opacity-80">
+        <div className="text-white/40 font-black text-6xl tracking-tighter leading-none">
           {number}
         </div>
       </div>
       <div>
-        <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tighter uppercase">{title}</h3>
+        <h3 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tighter uppercase">{title}</h3>
         <p className="text-zinc-400 text-lg md:text-xl leading-relaxed max-w-2xl font-medium">{description}</p>
       </div>
     </div>
@@ -194,10 +215,10 @@ const ProcessStep = ({ number, title, description, isKu }: { number: string; tit
 const Process = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
   const isKu = lang === 'ku';
   return (
-    <section id="process" className="bg-zinc-950 py-32">
+    <section id="process" className="bg-black py-32 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="mb-32">
+        <div className="mb-24">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -205,14 +226,14 @@ const Process = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="mb-6">
-              <span className="text-lime-400 font-bold tracking-widest text-sm uppercase">{t.process_badge}</span>
+              <span className="text-white/50 font-bold tracking-widest text-sm uppercase">{t.process_badge}</span>
             </motion.div>
             
-            <motion.h2 variants={fadeInUp} className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.9] uppercase">
+            <motion.h2 variants={fadeInUp} className="text-5xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.9] uppercase">
               <span className="block">{t.process_title_1}</span>
-              <span className="block text-zinc-600">{t.process_title_2}</span>
+              <span className="block text-zinc-500">{t.process_title_2}</span>
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-2xl text-zinc-400 max-w-3xl leading-relaxed font-medium">
+            <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-zinc-400 max-w-3xl leading-relaxed font-medium">
               {t.process_subtitle}
             </motion.p>
           </motion.div>
@@ -245,12 +266,72 @@ const Process = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
           viewport={{ once: true }}
           className="pt-16 border-t border-white/20"
         >
-            <a href="#contact" className="inline-flex items-center gap-4 text-white font-bold text-2xl uppercase tracking-tighter hover:text-lime-400 transition-colors group">
+            <a href="#contact" className="inline-flex items-center gap-4 text-white font-bold text-2xl uppercase tracking-tighter hover:text-zinc-400 transition-colors group">
               {t.start_deployment} 
               <ArrowUpRight className={`w-8 h-8 transition-transform ${isKu ? 'rotate-90 group-hover:-translate-x-2' : 'group-hover:translate-x-2 group-hover:-translate-y-2'}`}/>
             </a>
         </motion.div>
         
+      </div>
+    </section>
+  );
+};
+
+const ValueItem = ({ number, title, text }: { number: string, title: string, text: string }) => (
+    <motion.div variants={fadeInUp} className="group border-t border-black/10 pt-8 pb-12">
+        <div className="text-zinc-400 font-bold text-sm mb-6 uppercase tracking-widest">{number}</div>
+        <h3 className="text-3xl md:text-4xl font-black text-black tracking-tighter uppercase mb-6">{title}</h3>
+        <p className="text-zinc-600 text-xl leading-relaxed font-medium">
+          {text}
+        </p>
+    </motion.div>
+);
+
+const Values = ({ t }: { t: any }) => {
+  return (
+    <section id="values" className="py-32 bg-zinc-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="mb-24"
+        >
+          <div className="mb-6">
+                <span className="text-zinc-500 font-bold tracking-widest text-sm uppercase">{t.values_badge}</span>
+          </div>
+          <h2 className="text-5xl md:text-8xl font-black text-black mb-6 tracking-tighter uppercase">{t.values_title}</h2>
+        </motion.div>
+
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0"
+        >
+            <ValueItem 
+                number="01"
+                title={t.value_1_title}
+                text={t.value_1_text}
+            />
+            <ValueItem 
+                number="02"
+                title={t.value_2_title}
+                text={t.value_2_text}
+            />
+             <ValueItem 
+                number="03"
+                title={t.value_3_title}
+                text={t.value_3_text}
+            />
+             <ValueItem 
+                number="04"
+                title={t.value_4_title}
+                text={t.value_4_text}
+            />
+        </motion.div>
       </div>
     </section>
   );
@@ -268,31 +349,31 @@ interface PricingCardProps {
 const PricingCard = ({ title, desc, highlight, features, t, isKu }: PricingCardProps) => (
   <motion.div 
     variants={fadeInUp}
-    className={`relative flex flex-col p-10 md:p-12 transition-all duration-300 h-full ${highlight ? 'bg-zinc-900 border-2 border-lime-400' : 'bg-black border border-white/10 hover:border-white/30'}`}
+    className={`relative flex flex-col p-10 md:p-12 transition-all duration-300 h-full rounded-3xl ${highlight ? 'bg-black text-white shadow-2xl scale-[1.02]' : 'bg-white border border-black/10 text-black hover:border-black/30'}`}
   >
     {highlight && (
-      <div className="absolute top-0 right-0 bg-lime-400 text-black px-4 py-2 text-xs font-black tracking-widest uppercase">
+      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white border border-white/20 px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase shadow-xl whitespace-nowrap">
         Recommended
       </div>
     )}
     
-    <div className="mb-12 mt-4">
-      <h3 className={`text-4xl font-black mb-4 tracking-tighter uppercase ${highlight ? 'text-lime-400' : 'text-white'}`}>{title}</h3>
-      <p className="text-zinc-400 font-medium text-lg leading-relaxed">{desc}</p>
+    <div className="mb-12 mt-2">
+      <h3 className="text-4xl font-black mb-4 tracking-tighter uppercase">{title}</h3>
+      <p className={`font-medium text-lg leading-relaxed ${highlight ? 'text-zinc-400' : 'text-zinc-500'}`}>{desc}</p>
     </div>
 
     <ul className="space-y-6 mb-16 flex-1">
       {features.map((feature, idx) => (
         <li key={idx} className="flex items-start gap-4">
-          <div className={`mt-1 flex-shrink-0 ${highlight ? 'text-lime-400' : 'text-white'}`}>
+          <div className={`mt-1 flex-shrink-0 ${highlight ? 'text-white' : 'text-black'}`}>
             <ArrowRight className={`w-5 h-5 ${isKu ? 'rotate-180' : ''}`} strokeWidth={2.5} />
           </div>
-          <span className="text-base md:text-lg leading-snug font-medium text-zinc-300">{feature}</span>
+          <span className={`text-base md:text-lg leading-snug font-medium ${highlight ? 'text-zinc-300' : 'text-zinc-700'}`}>{feature}</span>
         </li>
       ))}
     </ul>
 
-    <button className={`w-full py-5 font-bold text-sm tracking-widest uppercase transition-all duration-300 ${highlight ? 'bg-lime-400 text-black hover:bg-white' : 'bg-white text-black hover:bg-lime-400'}`}>
+    <button className={`w-full py-5 rounded-xl font-bold text-sm tracking-widest uppercase transition-all duration-300 ${highlight ? 'bg-white text-black hover:bg-zinc-200' : 'bg-black text-white hover:bg-zinc-800'}`}>
       {t.choose_plan}
     </button>
   </motion.div>
@@ -300,17 +381,17 @@ const PricingCard = ({ title, desc, highlight, features, t, isKu }: PricingCardP
 
 const Pricing = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
   return (
-    <section id="pricing" className="py-32 bg-black">
+    <section id="pricing" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
-          className="mb-24"
+          className="text-center mb-24"
         >
-          <h2 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter uppercase">{t.pricing_title}</h2>
-          <p className="text-zinc-400 max-w-3xl text-2xl font-medium">
+          <h2 className="text-5xl md:text-8xl font-black text-black mb-8 tracking-tighter uppercase">{t.pricing_title}</h2>
+          <p className="text-zinc-500 max-w-3xl mx-auto text-xl md:text-2xl font-medium">
             {t.pricing_subtitle}
           </p>
         </motion.div>
@@ -320,7 +401,7 @@ const Pricing = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch"
         >
           <PricingCard 
             title={t.plan_1_title}
@@ -375,87 +456,27 @@ const Pricing = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
   );
 };
 
-const ValueItem = ({ number, title, text }: { number: string, title: string, text: string }) => (
-    <motion.div variants={fadeInUp} className="group border-t border-white/20 pt-8 pb-12">
-        <div className="text-lime-400 font-bold text-sm mb-6 uppercase tracking-widest">{number}</div>
-        <h3 className="text-3xl md:text-4xl font-black text-white tracking-tighter uppercase mb-6">{title}</h3>
-        <p className="text-zinc-400 text-xl leading-relaxed font-medium">
-          {text}
-        </p>
-    </motion.div>
-);
-
-const Values = ({ t }: { t: any }) => {
-  return (
-    <section id="values" className="py-32 bg-zinc-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          className="mb-24"
-        >
-          <div className="mb-6">
-                <span className="text-lime-400 font-bold tracking-widest text-sm uppercase">{t.values_badge}</span>
-          </div>
-          <h2 className="text-6xl md:text-8xl font-black text-white mb-6 tracking-tighter uppercase">{t.values_title}</h2>
-        </motion.div>
-
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0"
-        >
-            <ValueItem 
-                number="01"
-                title={t.value_1_title}
-                text={t.value_1_text}
-            />
-            <ValueItem 
-                number="02"
-                title={t.value_2_title}
-                text={t.value_2_text}
-            />
-             <ValueItem 
-                number="03"
-                title={t.value_3_title}
-                text={t.value_3_text}
-            />
-             <ValueItem 
-                number="04"
-                title={t.value_4_title}
-                text={t.value_4_text}
-            />
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
 const Footer = ({ t }: { t: any }) => {
   return (
-    <footer id="contact" className="bg-lime-400 pt-32 pb-12">
+    <footer id="contact" className="bg-black pt-32 pb-12 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-32">
           
           <div className="max-w-3xl">
-            <h2 className="text-7xl md:text-9xl font-black text-black mb-8 tracking-tighter uppercase leading-[0.85]">
+            <h2 className="text-6xl md:text-9xl font-black text-white mb-8 tracking-tighter uppercase leading-[0.9]">
               {t.footer_title_1} <br/> 
-              <span className="text-zinc-800">{t.footer_title_2}</span>
+              <span className="text-zinc-600">{t.footer_title_2}</span>
             </h2>
-            <p className="text-zinc-800 text-3xl mb-12 font-medium">
+            <p className="text-zinc-400 text-2xl md:text-3xl mb-12 font-medium">
               {t.footer_subtitle}
             </p>
-            <a href="mailto:contact@chnglla.com" className="inline-block border-b-4 border-black pb-2 text-4xl md:text-5xl font-black text-black hover:text-white hover:border-white transition-all uppercase">
+            <a href="mailto:contact@chnglla.com" className="inline-block border-b-2 border-white pb-2 text-3xl md:text-5xl font-black text-white hover:text-zinc-400 hover:border-zinc-400 transition-all uppercase">
               contact@chnglla.com
             </a>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-black/20 flex flex-col md:flex-row justify-between items-center text-zinc-900 font-bold text-sm uppercase tracking-wider">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-zinc-500 font-bold text-sm uppercase tracking-wider">
           <p>© {new Date().getFullYear()} {t.brand}. All rights reserved.</p>
           <div className="flex gap-8 mt-4 md:mt-0">
              <a href="#" className="hover:text-white transition-colors">Instagram</a>
@@ -487,12 +508,12 @@ export default function App() {
   const t = translations[lang];
 
   return (
-    <div className={`min-h-screen bg-black text-white selection:bg-lime-400 selection:text-black ${lang === 'ku' ? 'font-ku' : 'font-en'}`}>
+    <div className={`min-h-screen bg-white text-black selection:bg-black selection:text-white ${lang === 'ku' ? 'font-ku' : 'font-en'}`}>
       <Navbar lang={lang} setLang={handleSetLang} t={t} />
       <Hero t={t} lang={lang} />
+      <Values t={t} />
       <Process t={t} lang={lang} />
       <Pricing t={t} lang={lang} />
-      <Values t={t} />
       <Footer t={t} />
     </div>
   );
