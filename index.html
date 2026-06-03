@@ -5,15 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chnglla | We Do The Work. You Get The Fame.</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              ku: ['Noto Sans Arabic', 'sans-serif'],
+              en: ['Inter', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --font-en: 'Inter', sans-serif;
+        --font-ku: 'Noto Sans Arabic', sans-serif;
+      }
       body {
-        font-family: 'Inter', sans-serif;
+        font-family: var(--font-en);
         background-color: #050505;
         color: #fff;
         overflow-x: hidden;
+      }
+      body[dir="rtl"] {
+        font-family: var(--font-ku);
       }
       
       /* Noise Texture */
