@@ -8,7 +8,10 @@ export default function Dashboard({ t }: { t: any }) {
     <div className="min-h-screen bg-zinc-50 flex">
       {/* Sidebar */}
       <aside className="w-64 bg-white border-r border-zinc-200 flex flex-col">
-        <div className="p-6 border-b border-zinc-100">
+        <div className="p-6 border-b border-zinc-100 flex items-center gap-3">
+          <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center overflow-hidden">
+            <img src="/logo.png" alt="Chnglla Logo" className="w-full h-full object-cover bg-black" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+          </div>
           <Link to="/" className="font-black text-2xl tracking-tighter uppercase text-black">
             {t.brand}
           </Link>

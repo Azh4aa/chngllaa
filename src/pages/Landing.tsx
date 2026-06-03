@@ -46,8 +46,11 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md border-b border-black/5 py-4' : 'bg-transparent border-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="w-4 h-4 bg-black rounded-sm group-hover:rotate-45 transition-transform duration-300"></div>
+          <Link to="/" className="flex items-center gap-3 group cursor-pointer">
+            <div className="w-10 h-10 bg-black rounded-lg group-hover:rotate-12 transition-transform duration-300 flex items-center justify-center overflow-hidden">
+              {/* Fallback box if logo.png is missing */}
+              <img src="/logo.png" alt="Chnglla Logo" className="w-full h-full object-cover bg-black" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+            </div>
             <span className="font-black text-2xl tracking-tighter text-black uppercase">{t.brand}</span>
           </Link>
           
@@ -251,9 +254,10 @@ const Process = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
               <span className="block">{t.process_title_1}</span>
               <span className="block text-zinc-500">{t.process_title_2}</span>
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-zinc-400 max-w-3xl leading-relaxed font-medium">
-              {t.process_subtitle}
-            </motion.p>
+            <motion.div variants={fadeInUp} className="text-xl md:text-2xl text-zinc-400 max-w-4xl leading-relaxed font-medium">
+              <span className="text-2xl md:text-4xl font-black text-white">{t.process_subtitle_bold}</span>
+              {t.process_subtitle_rest}
+            </motion.div>
           </motion.div>
         </div>
 
@@ -383,15 +387,27 @@ const PricingCard = ({ title, desc, highlight, features, t, isKu }: PricingCardP
       </div>
 
       <ul className="space-y-6 mb-16 flex-1">
-        {features.map((feature, idx) => (
+      {features.map((feature, idx) => {
+        // Simple markdown bold parser for **text**
+        const parts = feature.split(/(\*\*.*?\*\*)/g);
+        
+        return (
           <li key={idx} className="flex items-start gap-4">
             <div className={`mt-1 flex-shrink-0 ${highlight ? 'text-white' : 'text-black'}`}>
               <ArrowRight className={`w-5 h-5 ${isKu ? 'rotate-180' : ''}`} strokeWidth={2.5} />
             </div>
-            <span className={`text-base md:text-lg leading-snug font-medium ${highlight ? 'text-zinc-300' : 'text-zinc-700'}`}>{feature}</span>
+            <span className={`text-base md:text-lg leading-snug font-medium ${highlight ? 'text-zinc-300' : 'text-zinc-700'}`}>
+              {parts.map((part, i) => {
+                if (part.startsWith('**') && part.endsWith('**')) {
+                  return <strong key={i} className={`font-black ${highlight ? 'text-white' : 'text-black'}`}>{part.slice(2, -2)}</strong>;
+                }
+                return part;
+              })}
+            </span>
           </li>
-        ))}
-      </ul>
+        );
+      })}
+    </ul>
 
       <button onClick={() => navigate('/onboarding')} className={`w-full py-5 rounded-xl font-bold text-sm tracking-widest uppercase transition-all duration-300 ${highlight ? 'bg-white text-black hover:bg-zinc-200' : 'bg-black text-white hover:bg-zinc-800'}`}>
         {t.choose_plan}
@@ -427,11 +443,7 @@ const Pricing = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
           <PricingCard 
             title={t.plan_1_title}
             desc={t.plan_1_desc}
-            features={[
-              t.plan_1_feature_1,
-              t.plan_1_feature_2,
-              t.plan_1_feature_3
-            ]}
+            features={t.plan_1_features}
             t={t}
             isKu={lang === 'ku'}
           />
@@ -439,35 +451,21 @@ const Pricing = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
             title={t.plan_2_title}
             desc={t.plan_2_desc}
             highlight={true}
-            features={[
-              t.plan_2_feature_1,
-              t.plan_2_feature_2,
-              t.plan_2_feature_3,
-              t.plan_2_feature_4
-            ]}
+            features={t.plan_2_features}
             t={t}
             isKu={lang === 'ku'}
           />
           <PricingCard 
             title={t.plan_3_title}
             desc={t.plan_3_desc}
-            features={[
-              t.plan_3_feature_1,
-              t.plan_3_feature_2,
-              t.plan_3_feature_3
-            ]}
+            features={t.plan_3_features}
             t={t}
             isKu={lang === 'ku'}
           />
           <PricingCard 
             title={t.plan_4_title}
             desc={t.plan_4_desc}
-            features={[
-              "End-to-End Enterprise Solution",
-              "Custom Content Volume",
-              "Bespoke Market Strategy",
-              "Dedicated Account Director"
-            ]}
+            features={t.plan_4_features}
             t={t}
             isKu={lang === 'ku'}
           />
@@ -491,18 +489,26 @@ const Footer = ({ t }: { t: any }) => {
             <p className="text-zinc-400 text-2xl md:text-3xl mb-12 font-medium">
               {t.footer_subtitle}
             </p>
-            <a href="mailto:contact@chnglla.com" className="inline-block border-b-2 border-white pb-2 text-3xl md:text-5xl font-black text-white hover:text-zinc-400 hover:border-zinc-400 transition-all uppercase">
-              contact@chnglla.com
-            </a>
+            <div className="flex flex-col gap-2 mt-8">
+              <a href="mailto:contact@chnglla.com" className="inline-block text-2xl md:text-4xl font-black text-white hover:text-zinc-400 transition-colors uppercase">
+                contact@chnglla.com
+              </a>
+              <a href="tel:+9647730009898" className="inline-block text-2xl md:text-4xl font-black text-white hover:text-zinc-400 transition-colors uppercase">
+                +964 773 000 9898
+              </a>
+              <a href="tel:+9647703962686" className="inline-block text-2xl md:text-4xl font-black text-white hover:text-zinc-400 transition-colors uppercase">
+                +964 770 396 2686
+              </a>
+            </div>
           </div>
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-zinc-500 font-bold text-sm uppercase tracking-wider">
           <p>© {new Date().getFullYear()} {t.brand}. All rights reserved.</p>
-          <div className="flex gap-8 mt-4 md:mt-0">
-             <a href="#" className="hover:text-white transition-colors">Instagram</a>
-             <a href="#" className="hover:text-white transition-colors">Twitter</a>
-             <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+          <div className="flex gap-8 mt-4 md:mt-0 font-bold uppercase">
+             <a href="https://www.linkedin.com/company/chnglla/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+             <a href="https://www.facebook.com/profile.php?id=61573153085767" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Facebook</a>
+             <a href="https://www.instagram.com/chnglla/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Instagram</a>
           </div>
         </div>
       </div>

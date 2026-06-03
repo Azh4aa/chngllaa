@@ -13,10 +13,13 @@ export default function Login({ t }: { t: any }) {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <div className="p-8">
+      <div className="p-8 flex justify-between items-center">
         <Link to="/" className="inline-flex items-center gap-2 text-zinc-500 hover:text-black font-bold text-sm uppercase tracking-widest transition-colors">
           <ArrowLeft className="w-4 h-4" /> Back to Site
         </Link>
+        <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center overflow-hidden">
+          <img src="/logo.png" alt="Chnglla Logo" className="w-full h-full object-cover bg-black" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+        </div>
       </div>
       
       <div className="flex-1 flex flex-col justify-center items-center px-4">
