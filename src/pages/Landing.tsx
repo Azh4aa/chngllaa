@@ -9,7 +9,6 @@ import {
   ArrowUpRight
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import Spline from '@splinetool/react-spline';
 import { caseStudies } from '../data/caseStudies';
 
 /* --- Animations --- */
@@ -152,14 +151,6 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
               </span>
             </motion.div>
           )}
-
-          {/* Spline 3D Object */}
-          <motion.div
-            variants={fadeInUp}
-            className="w-full h-[300px] md:h-[400px] mb-8 relative pointer-events-auto cursor-grab active:cursor-grabbing"
-          >
-            <Spline scene="https://prod.spline.design/3nceKI91KNb7VruV/scene.splinecode" />
-          </motion.div>
 
           <motion.h1
             variants={fadeInUp}
@@ -599,9 +590,9 @@ export default function Landing({ lang, setLang, t }: { lang: 'en' | 'ku', setLa
       <Navbar lang={lang} setLang={setLang} t={t} />
       <Hero t={t} lang={lang} />
       <Values t={t} />
-      <CaseStudies t={t} lang={lang} />
       <Process t={t} lang={lang} />
       <Pricing t={t} lang={lang} />
+      <CaseStudies t={t} lang={lang} />
       <Footer t={t} />
     </>
   );
