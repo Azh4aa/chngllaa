@@ -68,7 +68,15 @@ export const translations = {
     value_4_text: "Following guidelines, by professional experts, we work specifically with your brand voice.",
     footer_title_1: "The Market",
     footer_title_2: "Is Waiting.",
-    footer_subtitle: "Let's take your business to another level."
+    footer_subtitle: "Let's take your business to another level.",
+    onboarding_cancel: "Cancel",
+    onboarding_title: "Let's Talk.",
+    onboarding_subtitle: "Leave your contact details and we'll reach out to set up your content engine.",
+    onboarding_name: "Full Name",
+    onboarding_company: "Company / Brand Name",
+    onboarding_email: "Email",
+    onboarding_phone: "Phone (Optional)",
+    onboarding_submit: "Submit"
   },
   ku: {
     brand: "چنگڵە",
@@ -77,7 +85,7 @@ export const translations = {
     nav_why_us: "بۆچی ئێمە؟",
     nav_get_started: "دەستپێبکە",
     hero_badge: "",
-    hero_title_1: "مارکێتینگی،",
+    hero_title_1: " مارکێتینگی نوێ،",
     hero_title_2: "شێوازی نوێی پێویستە",
     hero_subtitle: "مارکێتینگی تەواو، لە ئەستۆی ئێمەیە.",
     hero_cta_1: "پلانەکان",
@@ -92,7 +100,7 @@ export const translations = {
     step_1_title: "١. پەڕەی فەرمی",
     step_1_desc: "پەڕەی فەرمی براندەکەت، بە داهێنەرانە، بە پرۆفیشنالانە، بە ستانداری سەروو بازاڕ بەرەوپێشەوە دەبەین نەک تەنها بەڕێوە بردن.",
     step_2_title: "٢. پەڕە لاوەکییەکان",
-    step_2_desc: "هەژماری لاوەکی بەکاردەهێنین، کە خۆیان مەبەست لێیان بڵاو کراوە و ڕیکلام نییە و بە ناڕاستەوخۆ ترافیک دەهێنێت بۆ بزنسەکەت، بۆ مەبەستەکەت.",
+    step_2_desc: "هەژماری لاوەکی بەکاردەهێنین، کە خۆیان مەبەست لێیان بڵاوکراوە و ڕیکلام نییە و بە ناڕاستەوخۆ ترافیک دەهێنێت بۆ بزنسەکەت، بۆ مەبەستەکەت.",
     step_3_title: "هەنگاوەکەی کەس بیری نییە",
     step_3_desc: "ئەیپیئای وەتس ئەپ، وێبسایت، ئێس ئی ئۆ، ئەیئای ئینجێکشن. هەموو بابەتە تەکنیەکان کە پشتگوێ ئەخرێن",
     start_deployment: "دەستپێبکە",
@@ -113,7 +121,7 @@ export const translations = {
       "ئەیپیئایی و بابەتە تێکنیکاڵەکان",
       "**٤ هەژمارە لاوەکی**"
     ],
-    plan_3_title: "پلانە چنگڵە",
+    plan_3_title: "پلانی چنگڵە",
     plan_3_desc: "بەرزترین ئاستی کوالێتی. گۆڕینی خێرای هەموو بازاڕ",
     plan_3_features: [
       "مارکێتینگی پەڕەی فەرمی",
@@ -124,7 +132,7 @@ export const translations = {
       "تۆڕێکی تەواوی"
     ],
     plan_4_title: "تایبەت",
-    plan_4_desc: "بازرگانییەکەت پێویستی بە شێوازێکی تایبەت؟ ئەتوانیت لەگەڵمان قسە بکەیت و هەڵیبژێریت چۆن کارمان لەگەڵ ئەکەیت.",
+    plan_4_desc: "بازرگانییەکەت پێویستی بە شێوازێکی تایبەتە؟ ئەتوانیت لەگەڵمان قسە بکەیت و هەڵیبژێریت چۆن کارمان لەگەڵ ئەکەیت.",
     plan_4_features: [],
     choose_plan: "هەڵیبژێرە",
     values_badge: "بۆچی ئێمە؟",
@@ -139,6 +147,14 @@ export const translations = {
     value_4_text: "بە پێی ڕێنماییەکان، لەلایەن تایبەتمەندی پرۆفیشنالەوە، تایبەت بە دەنگی براندەکەت کاردەکەین",
     footer_title_1: "بازاڕ",
     footer_title_2: "چاوەڕێتە",
-    footer_subtitle: "با بزنسەکەت بەرینە ئاستێکی تر"
+    footer_subtitle: "با بزنسەکەت بەرینە ئاستێکی تر",
+    onboarding_cancel: "گەڕانەوە",
+    onboarding_title: "با قسە بکەین.",
+    onboarding_subtitle: "زانیارییەکانت جێبهێڵە و پەیوەندیت پێوە دەکەین بۆ ڕێکخستنی کارەکانت.",
+    onboarding_name: "ناوی تەواو",
+    onboarding_company: "ناوی کۆمپانیا / براند",
+    onboarding_email: "ئیمەیڵ",
+    onboarding_phone: "ژمارە تەلەفۆن (ئارەزوومەندانە)",
+    onboarding_submit: "ناردن"
   }
 };

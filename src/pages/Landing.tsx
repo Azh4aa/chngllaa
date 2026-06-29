@@ -66,10 +66,6 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
               <Globe className="w-4 h-4" />
               <span className="text-xs font-bold uppercase tracking-widest">{lang === 'en' ? 'KU' : 'EN'}</span>
             </button>
-            
-            <Link to="/login" className="text-sm font-bold tracking-tight text-zinc-500 hover:text-black transition-colors">
-              Login
-            </Link>
 
             <Link to="/onboarding" className="bg-black text-white hover:bg-zinc-800 transition-colors px-6 py-2.5 rounded-full text-sm font-bold tracking-tight shadow-lg shadow-black/10">
               {t.nav_get_started}
@@ -103,8 +99,6 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
               <MobileNavLink onClick={() => setIsOpen(false)} href="#process">{t.nav_how_it_works}</MobileNavLink>
               <MobileNavLink onClick={() => setIsOpen(false)} href="#pricing">{t.nav_pricing}</MobileNavLink>
               <MobileNavLink onClick={() => setIsOpen(false)} href="#values">{t.nav_why_us}</MobileNavLink>
-              
-              <Link to="/login" onClick={() => setIsOpen(false)} className="text-center text-zinc-500 font-bold uppercase tracking-widest text-sm pt-4">Login</Link>
               <Link to="/onboarding" onClick={() => setIsOpen(false)} className="text-white bg-black rounded-xl block w-full text-center px-4 py-4 font-bold mt-2 uppercase tracking-widest text-sm">{t.nav_get_started}</Link>
             </div>
           </motion.div>
