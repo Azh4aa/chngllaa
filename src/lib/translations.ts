@@ -76,7 +76,10 @@ export const translations = {
     onboarding_company: "Company / Brand Name",
     onboarding_email: "Email",
     onboarding_phone: "Phone (Optional)",
-    onboarding_submit: "Submit"
+    onboarding_submit: "Submit",
+    onboarding_success_title: "Great!",
+    onboarding_success_desc: "Your details have been submitted. We'll be in touch soon.",
+    onboarding_success_back: "Back to Home"
   },
   ku: {
     brand: "چنگڵە",
@@ -155,6 +158,9 @@ export const translations = {
     onboarding_company: "ناوی کۆمپانیا / براند",
     onboarding_email: "ئیمەیڵ",
     onboarding_phone: "ژمارە تەلەفۆن (ئارەزوومەندانە)",
-    onboarding_submit: "ناردن"
+    onboarding_submit: "ناردن",
+    onboarding_success_title: "نایابە!",
+    onboarding_success_desc: "زانیارییەکانت بە سەرکەوتوویی نێردرا. بەم زووانە پەیوەندیت پێوە دەکەین.",
+    onboarding_success_back: "گەڕانەوە بۆ پەڕەی سەرەکی"
   }
 };
