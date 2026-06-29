@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Check, 
-  ArrowRight, 
-  Menu, 
+import {
+  Check,
+  ArrowRight,
+  Menu,
   X,
   Globe,
   ArrowUpRight
@@ -55,15 +55,15 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
             </div>
             <span className="font-black text-2xl tracking-tighter text-black uppercase">{t.brand}</span>
           </Link>
-          
+
           <div className="hidden md:flex items-center space-x-8">
             <NavLink href="#process">{t.nav_how_it_works}</NavLink>
             <NavLink href="#case-studies">{t.nav_case_studies}</NavLink>
             <NavLink href="#pricing">{t.nav_pricing}</NavLink>
             <NavLink href="#values">{t.nav_why_us}</NavLink>
-            
-            <button 
-              onClick={toggleLang} 
+
+            <button
+              onClick={toggleLang}
               className="flex items-center gap-2 text-zinc-500 hover:text-black transition-colors"
             >
               <Globe className="w-4 h-4" />
@@ -76,8 +76,8 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
           </div>
 
           <div className="flex md:hidden items-center gap-4">
-            <button 
-              onClick={toggleLang} 
+            <button
+              onClick={toggleLang}
               className="flex items-center gap-1 text-zinc-500 hover:text-black"
             >
               <Globe className="w-5 h-5" />
@@ -92,7 +92,7 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -138,8 +138,8 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
   return (
     <div className="relative pt-32 pb-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 pt-10 relative pointer-events-none">
-        
-        <motion.div 
+
+        <motion.div
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -154,14 +154,14 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
           )}
 
           {/* Spline 3D Object */}
-          <motion.div 
-            variants={fadeInUp} 
+          <motion.div
+            variants={fadeInUp}
             className="w-full h-[300px] md:h-[400px] mb-8 relative pointer-events-auto cursor-grab active:cursor-grabbing"
           >
             <Spline scene="https://prod.spline.design/qapTgoEXAyRkBZIa/scene.splinecode" />
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             variants={fadeInUp}
             className={`text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-black mb-8 leading-[0.9] ${lang === 'ku' ? 'leading-[1.1] lg:leading-[1.1]' : ''}`}
           >
@@ -171,14 +171,14 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
             </span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             variants={fadeInUp}
             className="mt-8 max-w-2xl mx-auto text-xl md:text-2xl text-zinc-500 font-medium leading-relaxed"
           >
             {t.hero_subtitle}
           </motion.p>
 
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
           >
@@ -192,17 +192,17 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="mt-20 max-w-5xl mx-auto rounded-3xl md:rounded-[2.5rem] overflow-hidden bg-zinc-100 border border-black/5 aspect-[16/9] shadow-2xl relative pointer-events-auto"
         >
-          <video 
+          <video
             ref={videoRef}
-            autoPlay 
-            loop 
-            muted 
+            autoPlay
+            loop
+            muted
             playsInline
             className="w-full h-full object-cover"
             src="/showcase.mp4"
@@ -218,7 +218,7 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
 };
 
 const ProcessStep = ({ number, title, description, isKu }: { number: string; title: string; description: string, isKu: boolean }) => (
-  <motion.div 
+  <motion.div
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, margin: "-100px" }}
@@ -244,7 +244,7 @@ const Process = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
   return (
     <section id="process" className="bg-black py-32 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="mb-24">
           <motion.div
             initial="hidden"
@@ -255,7 +255,7 @@ const Process = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
             <motion.div variants={fadeInUp} className="mb-6">
               <span className="text-white/50 font-bold tracking-widest text-sm uppercase">{t.process_badge}</span>
             </motion.div>
-            
+
             <motion.h2 variants={fadeInUp} className="text-5xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.9] uppercase">
               <span className="block">{t.process_title_1}</span>
               <span className="block text-zinc-500">{t.process_title_2}</span>
@@ -268,19 +268,19 @@ const Process = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
         </div>
 
         <div className="space-y-0">
-          <ProcessStep 
+          <ProcessStep
             number="01"
             title={t.step_1_title}
             description={t.step_1_desc}
             isKu={isKu}
           />
-          <ProcessStep 
+          <ProcessStep
             number="02"
             title={t.step_2_title}
             description={t.step_2_desc}
             isKu={isKu}
           />
-          <ProcessStep 
+          <ProcessStep
             number="03"
             title={t.step_3_title}
             description={t.step_3_desc}
@@ -288,18 +288,18 @@ const Process = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
           />
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="pt-16 border-t border-white/20"
         >
-            <Link to="/onboarding" className="inline-flex items-center gap-4 text-white font-bold text-2xl uppercase tracking-tighter hover:text-zinc-400 transition-colors group">
-              {t.start_deployment} 
-              <ArrowUpRight className={`w-8 h-8 transition-transform ${isKu ? 'rotate-90 group-hover:-translate-x-2' : 'group-hover:translate-x-2 group-hover:-translate-y-2'}`}/>
-            </Link>
+          <Link to="/onboarding" className="inline-flex items-center gap-4 text-white font-bold text-2xl uppercase tracking-tighter hover:text-zinc-400 transition-colors group">
+            {t.start_deployment}
+            <ArrowUpRight className={`w-8 h-8 transition-transform ${isKu ? 'rotate-90 group-hover:-translate-x-2' : 'group-hover:translate-x-2 group-hover:-translate-y-2'}`} />
+          </Link>
         </motion.div>
-        
+
       </div>
     </section>
   );
@@ -332,7 +332,7 @@ const CaseStudies = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
     <section id="case-studies" className="py-32 bg-white border-t border-black/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -347,8 +347,8 @@ const CaseStudies = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
               <span className="block text-zinc-400">{t.case_studies_title_2}</span>
             </motion.h2>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -360,7 +360,7 @@ const CaseStudies = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -377,20 +377,20 @@ const CaseStudies = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
 };
 
 const ValueItem = ({ number, title, text }: { number: string, title: string, text: string }) => (
-    <motion.div variants={fadeInUp} className="group border-t border-black/10 pt-8 pb-12">
-        <div className="text-zinc-400 font-bold text-sm mb-6 uppercase tracking-widest">{number}</div>
-        <h3 className="text-3xl md:text-4xl font-black text-black tracking-tighter uppercase mb-6">{title}</h3>
-        <p className="text-zinc-600 text-xl leading-relaxed font-medium">
-          {text}
-        </p>
-    </motion.div>
+  <motion.div variants={fadeInUp} className="group border-t border-black/10 pt-8 pb-12">
+    <div className="text-zinc-400 font-bold text-sm mb-6 uppercase tracking-widest">{number}</div>
+    <h3 className="text-3xl md:text-4xl font-black text-black tracking-tighter uppercase mb-6">{title}</h3>
+    <p className="text-zinc-600 text-xl leading-relaxed font-medium">
+      {text}
+    </p>
+  </motion.div>
 );
 
 const Values = ({ t }: { t: any }) => {
   return (
     <section id="values" className="py-32 bg-zinc-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -398,38 +398,38 @@ const Values = ({ t }: { t: any }) => {
           className="mb-24"
         >
           <div className="mb-6">
-                <span className="text-zinc-500 font-bold tracking-widest text-sm uppercase">{t.values_badge}</span>
+            <span className="text-zinc-500 font-bold tracking-widest text-sm uppercase">{t.values_badge}</span>
           </div>
           <h2 className="text-5xl md:text-8xl font-black text-black mb-6 tracking-tighter uppercase">{t.values_title}</h2>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
           className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0"
         >
-            <ValueItem 
-                number="01"
-                title={t.value_1_title}
-                text={t.value_1_text}
-            />
-            <ValueItem 
-                number="02"
-                title={t.value_2_title}
-                text={t.value_2_text}
-            />
-             <ValueItem 
-                number="03"
-                title={t.value_3_title}
-                text={t.value_3_text}
-            />
-             <ValueItem 
-                number="04"
-                title={t.value_4_title}
-                text={t.value_4_text}
-            />
+          <ValueItem
+            number="01"
+            title={t.value_1_title}
+            text={t.value_1_text}
+          />
+          <ValueItem
+            number="02"
+            title={t.value_2_title}
+            text={t.value_2_text}
+          />
+          <ValueItem
+            number="03"
+            title={t.value_3_title}
+            text={t.value_3_text}
+          />
+          <ValueItem
+            number="04"
+            title={t.value_4_title}
+            text={t.value_4_text}
+          />
         </motion.div>
       </div>
     </section>
@@ -448,7 +448,7 @@ interface PricingCardProps {
 const PricingCard = ({ title, desc, highlight, features, t, isKu }: PricingCardProps) => {
   const navigate = useNavigate();
   return (
-    <motion.div 
+    <motion.div
       variants={fadeInUp}
       className={`relative flex flex-col p-10 md:p-12 transition-all duration-300 h-full rounded-3xl ${highlight ? 'bg-black text-white shadow-2xl scale-[1.02]' : 'bg-white border border-black/10 text-black hover:border-black/30'}`}
     >
@@ -457,34 +457,34 @@ const PricingCard = ({ title, desc, highlight, features, t, isKu }: PricingCardP
           Recommended
         </div>
       )}
-      
+
       <div className="mb-12 mt-2">
         <h3 className="text-4xl font-black mb-4 tracking-tighter uppercase">{title}</h3>
         <p className={`font-medium text-lg leading-relaxed ${highlight ? 'text-zinc-400' : 'text-zinc-500'}`}>{desc}</p>
       </div>
 
       <ul className="space-y-6 mb-16 flex-1">
-      {features.map((feature, idx) => {
-        // Simple markdown bold parser for **text**
-        const parts = feature.split(/(\*\*.*?\*\*)/g);
-        
-        return (
-          <li key={idx} className="flex items-start gap-4">
-            <div className={`mt-1 flex-shrink-0 ${highlight ? 'text-white' : 'text-black'}`}>
-              <ArrowRight className={`w-5 h-5 ${isKu ? 'rotate-180' : ''}`} strokeWidth={2.5} />
-            </div>
-            <span className={`text-base md:text-lg leading-snug font-medium ${highlight ? 'text-zinc-300' : 'text-zinc-700'}`}>
-              {parts.map((part, i) => {
-                if (part.startsWith('**') && part.endsWith('**')) {
-                  return <strong key={i} className={`font-black ${highlight ? 'text-white' : 'text-black'}`}>{part.slice(2, -2)}</strong>;
-                }
-                return part;
-              })}
-            </span>
-          </li>
-        );
-      })}
-    </ul>
+        {features.map((feature, idx) => {
+          // Simple markdown bold parser for **text**
+          const parts = feature.split(/(\*\*.*?\*\*)/g);
+
+          return (
+            <li key={idx} className="flex items-start gap-4">
+              <div className={`mt-1 flex-shrink-0 ${highlight ? 'text-white' : 'text-black'}`}>
+                <ArrowRight className={`w-5 h-5 ${isKu ? 'rotate-180' : ''}`} strokeWidth={2.5} />
+              </div>
+              <span className={`text-base md:text-lg leading-snug font-medium ${highlight ? 'text-zinc-300' : 'text-zinc-700'}`}>
+                {parts.map((part, i) => {
+                  if (part.startsWith('**') && part.endsWith('**')) {
+                    return <strong key={i} className={`font-black ${highlight ? 'text-white' : 'text-black'}`}>{part.slice(2, -2)}</strong>;
+                  }
+                  return part;
+                })}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
 
       <button onClick={() => navigate('/onboarding')} className={`w-full py-5 rounded-xl font-bold text-sm tracking-widest uppercase transition-all duration-300 ${highlight ? 'bg-white text-black hover:bg-zinc-200' : 'bg-black text-white hover:bg-zinc-800'}`}>
         {t.choose_plan}
@@ -497,7 +497,7 @@ const Pricing = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
   return (
     <section id="pricing" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -510,21 +510,21 @@ const Pricing = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch"
         >
-          <PricingCard 
+          <PricingCard
             title={t.plan_1_title}
             desc={t.plan_1_desc}
             features={t.plan_1_features}
             t={t}
             isKu={lang === 'ku'}
           />
-          <PricingCard 
+          <PricingCard
             title={t.plan_2_title}
             desc={t.plan_2_desc}
             highlight={true}
@@ -532,14 +532,14 @@ const Pricing = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
             t={t}
             isKu={lang === 'ku'}
           />
-          <PricingCard 
+          <PricingCard
             title={t.plan_3_title}
             desc={t.plan_3_desc}
             features={t.plan_3_features}
             t={t}
             isKu={lang === 'ku'}
           />
-          <PricingCard 
+          <PricingCard
             title={t.plan_4_title}
             desc={t.plan_4_desc}
             features={t.plan_4_features}
@@ -557,10 +557,10 @@ const Footer = ({ t }: { t: any }) => {
     <footer id="contact" className="bg-black pt-32 pb-12 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-32">
-          
+
           <div className="max-w-3xl">
             <h2 className="text-6xl md:text-9xl font-black text-white mb-8 tracking-tighter uppercase leading-[0.9]">
-              {t.footer_title_1} <br/> 
+              {t.footer_title_1} <br />
               <span className="text-zinc-600">{t.footer_title_2}</span>
             </h2>
             <p className="text-zinc-400 text-2xl md:text-3xl mb-12 font-medium">
@@ -583,9 +583,9 @@ const Footer = ({ t }: { t: any }) => {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-zinc-500 font-bold text-sm uppercase tracking-wider">
           <p>© {new Date().getFullYear()} {t.brand}. All rights reserved.</p>
           <div className="flex gap-8 mt-4 md:mt-0 font-bold uppercase">
-             <a href="https://www.linkedin.com/company/chnglla/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
-             <a href="https://www.facebook.com/profile.php?id=61573153085767" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Facebook</a>
-             <a href="https://www.instagram.com/chnglla/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Instagram</a>
+            <a href="https://www.linkedin.com/company/chnglla/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+            <a href="https://www.facebook.com/profile.php?id=61573153085767" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Facebook</a>
+            <a href="https://www.instagram.com/chnglla/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Instagram</a>
           </div>
         </div>
       </div>
