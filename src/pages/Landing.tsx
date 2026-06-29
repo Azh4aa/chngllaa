@@ -9,6 +9,8 @@ import {
   ArrowUpRight
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import Spline from '@splinetool/react-spline';
+import { caseStudies } from '../data/caseStudies';
 
 /* --- Animations --- */
 const fadeInUp = {
@@ -56,6 +58,7 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
           
           <div className="hidden md:flex items-center space-x-8">
             <NavLink href="#process">{t.nav_how_it_works}</NavLink>
+            <NavLink href="#case-studies">{t.nav_case_studies}</NavLink>
             <NavLink href="#pricing">{t.nav_pricing}</NavLink>
             <NavLink href="#values">{t.nav_why_us}</NavLink>
             
@@ -97,6 +100,7 @@ const Navbar = ({ lang, setLang, t }: { lang: 'en' | 'ku', setLang: (l: 'en' | '
           >
             <div className="px-4 pt-4 pb-8 flex flex-col gap-4">
               <MobileNavLink onClick={() => setIsOpen(false)} href="#process">{t.nav_how_it_works}</MobileNavLink>
+              <MobileNavLink onClick={() => setIsOpen(false)} href="#case-studies">{t.nav_case_studies}</MobileNavLink>
               <MobileNavLink onClick={() => setIsOpen(false)} href="#pricing">{t.nav_pricing}</MobileNavLink>
               <MobileNavLink onClick={() => setIsOpen(false)} href="#values">{t.nav_why_us}</MobileNavLink>
               <Link to="/onboarding" onClick={() => setIsOpen(false)} className="text-white bg-black rounded-xl block w-full text-center px-4 py-4 font-bold mt-2 uppercase tracking-widest text-sm">{t.nav_get_started}</Link>
@@ -132,14 +136,14 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
   }, []);
 
   return (
-    <div className="relative pt-32 pb-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 pt-10">
+    <div className="relative pt-32 pb-20 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 pt-10 relative pointer-events-none">
         
         <motion.div 
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="max-w-4xl text-center mx-auto"
+          className="max-w-4xl text-center mx-auto pointer-events-auto"
         >
           {t.hero_badge && (
             <motion.div variants={fadeInUp} className="mb-6">
@@ -148,6 +152,14 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
               </span>
             </motion.div>
           )}
+
+          {/* Spline 3D Object */}
+          <motion.div 
+            variants={fadeInUp} 
+            className="w-full h-[300px] md:h-[400px] mb-8 relative pointer-events-auto cursor-grab active:cursor-grabbing"
+          >
+            <Spline scene="https://prod.spline.design/qapTgoEXAyRkBZIa/scene.splinecode" />
+          </motion.div>
 
           <motion.h1 
             variants={fadeInUp}
@@ -184,7 +196,7 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-20 max-w-5xl mx-auto rounded-3xl md:rounded-[2.5rem] overflow-hidden bg-zinc-100 border border-black/5 aspect-[16/9] shadow-2xl relative"
+          className="mt-20 max-w-5xl mx-auto rounded-3xl md:rounded-[2.5rem] overflow-hidden bg-zinc-100 border border-black/5 aspect-[16/9] shadow-2xl relative pointer-events-auto"
         >
           <video 
             ref={videoRef}
@@ -288,6 +300,77 @@ const Process = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
             </Link>
         </motion.div>
         
+      </div>
+    </section>
+  );
+};
+
+const CaseStudyCard = ({ study, t, isKu }: { study: any, t: any, isKu: boolean }) => (
+  <motion.div variants={fadeInUp} className="group cursor-pointer">
+    <div className="overflow-hidden rounded-3xl aspect-[4/3] mb-8 relative border border-black/5 shadow-xl shadow-black/5">
+      <img src={study.imageUrl} alt={isKu ? study.title.ku : study.title.en} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+      <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+    </div>
+    <div className="flex items-center gap-4 text-zinc-500 font-bold text-xs uppercase tracking-widest mb-4">
+      <span>{study.date}</span>
+      <span className="w-1 h-1 rounded-full bg-zinc-300"></span>
+      <a href={study.linkedinUrl} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-black transition-colors">
+        {t.case_studies_read_more} <ArrowUpRight className="w-3 h-3" />
+      </a>
+    </div>
+    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-4 group-hover:text-zinc-600 transition-colors">
+      {isKu ? study.title.ku : study.title.en}
+    </h3>
+    <p className="text-zinc-500 text-lg font-medium leading-relaxed">
+      {isKu ? study.description.ku : study.description.en}
+    </p>
+  </motion.div>
+);
+
+const CaseStudies = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
+  return (
+    <section id="case-studies" className="py-32 bg-white border-t border-black/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="max-w-3xl"
+          >
+            <motion.div variants={fadeInUp} className="mb-6">
+              <span className="text-zinc-500 font-bold tracking-widest text-sm uppercase">{t.case_studies_badge}</span>
+            </motion.div>
+            <motion.h2 variants={fadeInUp} className="text-5xl md:text-8xl font-black tracking-tighter text-black uppercase leading-[0.9]">
+              <span className="block">{t.case_studies_title_1}</span>
+              <span className="block text-zinc-400">{t.case_studies_title_2}</span>
+            </motion.h2>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="pb-4"
+          >
+            <p className="text-zinc-500 text-xl font-medium max-w-xs md:max-w-sm">
+              {t.case_studies_subtitle}
+            </p>
+          </motion.div>
+        </div>
+
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20"
+        >
+          {caseStudies.map((study) => (
+            <CaseStudyCard key={study.id} study={study} t={t} isKu={lang === 'ku'} />
+          ))}
+        </motion.div>
       </div>
     </section>
   );
@@ -516,6 +599,7 @@ export default function Landing({ lang, setLang, t }: { lang: 'en' | 'ku', setLa
       <Navbar lang={lang} setLang={setLang} t={t} />
       <Hero t={t} lang={lang} />
       <Values t={t} />
+      <CaseStudies t={t} lang={lang} />
       <Process t={t} lang={lang} />
       <Pricing t={t} lang={lang} />
       <Footer t={t} />
