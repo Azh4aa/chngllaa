@@ -27,5 +27,19 @@ export const caseStudies: CaseStudy[] = [
     imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426&ixlib=rb-4.0.3",
     linkedinUrl: "https://www.linkedin.com/",
     date: "2024-02-15"
+  },
+  {
+    id: "2",
+    title: {
+      en: "The Power of Clipping: Trump's Election Strategy",
+      ku: "هێزی بڕینی ڤیدیۆ: ستراتیژی هەڵبژاردنی ترەمپ"
+    },
+    description: {
+      en: "How strategic video clipping and short-form content distribution dominated the algorithm and influenced the narrative during the elections.",
+      ku: "چۆن بڕینی ستراتیژیی ڤیدیۆ و بڵاوکردنەوەی کورتە ڤیدیۆ زاڵ بوو بەسەر ئەلگۆریتم و کاریگەری لەسەر گێڕانەوەکان هەبوو لە کاتی هەڵبژاردنەکاندا."
+    },
+    imageUrl: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&q=80&w=2400&ixlib=rb-4.0.3",
+    linkedinUrl: "https://www.linkedin.com/company/chnglla/",
+    date: "2024-03-10"
   }
 ];
