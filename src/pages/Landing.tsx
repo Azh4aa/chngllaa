@@ -137,10 +137,6 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
 
   return (
     <div className="relative pt-32 pb-20 bg-white overflow-hidden">
-      {/* Spline 3D Object - Floating behind/with text */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-auto pt-20">
-        <Spline scene="https://prod.spline.design/3nceKI91KNb7VruV/scene.splinecode" />
-      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 pt-10 relative pointer-events-none">
 
         <motion.div
@@ -156,6 +152,14 @@ const Hero = ({ t, lang }: { t: any, lang: 'en' | 'ku' }) => {
               </span>
             </motion.div>
           )}
+
+          {/* Spline 3D Object */}
+          <motion.div
+            variants={fadeInUp}
+            className="w-full h-[300px] md:h-[400px] mb-8 relative pointer-events-auto cursor-grab active:cursor-grabbing"
+          >
+            <Spline scene="https://prod.spline.design/3nceKI91KNb7VruV/scene.splinecode" />
+          </motion.div>
 
           <motion.h1
             variants={fadeInUp}
